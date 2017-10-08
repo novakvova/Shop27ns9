@@ -28,5 +28,16 @@ namespace BLL.Concrete
             _categoryRepository.SaveChanges();
             return category.Id;
         }
+
+        public IEnumerable<CategoryItemProdViewModel> GetCategories()
+        {
+            var model=_categoryRepository.GetAllCategories()
+                .Select(c=>new CategoryItemProdViewModel {
+                    Id=c.Id,
+                    Name=c.Name,
+                    Published=c.Published
+                });
+            return model.AsEnumerable();
+        }
     }
 }

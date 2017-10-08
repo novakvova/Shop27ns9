@@ -10,5 +10,6 @@ namespace BLL.Abstract
     public interface IProductProvider
     {
         int AddCategory(AddCategoryProdViewModel addCategory);
+        IEnumerable<CategoryItemProdViewModel> GetCategories();
     }
 }

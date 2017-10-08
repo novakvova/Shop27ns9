@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BLL.ViewModels.CategoryItemProdViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Published
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th>
+                @item.Id
+            </th>
+            <th>
+                @item.Name
+            </th>
+            <th>
+                @item.Published
+            </th>
+        </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("Create","Add","Category")
+
+

@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using BLL.Abstract;
 using DAL.Abstact;
 using DAL.Concrete;
 using DAL.Entities;
@@ -23,6 +24,8 @@ namespace BLL.Concrete
                 .As<IEFContext>().InstancePerRequest();
             builder.RegisterType<CategoryRepository>()
                 .As<ICategoryRepository>().InstancePerRequest();
+            builder.RegisterType<ProductProvider>()
+                .As<IProductProvider>().InstancePerRequest();
             base.Load(builder);
         }
     }

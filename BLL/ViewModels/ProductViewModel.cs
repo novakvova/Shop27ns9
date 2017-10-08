@@ -11,4 +11,10 @@ namespace BLL.ViewModels
         public string Name { get; set; }
         public bool Published { get; set; }
     }
+    public class CategoryItemProdViewModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool Published { get; set; }
+    }
 }
