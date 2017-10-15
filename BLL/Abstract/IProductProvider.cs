@@ -11,5 +11,11 @@ namespace BLL.Abstract
     {
         int AddCategory(AddCategoryProdViewModel addCategory);
         IEnumerable<CategoryItemProdViewModel> GetCategories();
+        void Delete(int id);
+        EditCategoryProdViewModel EditCategory(int id);
+        int EditCategory(EditCategoryProdViewModel editCategory);
+        CategoryItemProdViewModel GetCategoryInfo(int id);
+
+
     }
 }

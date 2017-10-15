@@ -21,6 +21,16 @@ namespace DAL.Concrete
             return category;
         }
 
+        public void Delete(int id)
+        {
+            var category=this.GetCategoryById(id);
+            if(category!=null)
+            {
+                _context.Set<Category>().Remove(category);
+                this.SaveChanges();
+            }
+        }
+
         public void Dispose()
         {
             if(this._context!=null)
@@ -30,6 +40,12 @@ namespace DAL.Concrete
         public IQueryable<Category> GetAllCategories(bool published = true)
         {
             return this._context.Set<Category>();
+        }
+
+        public Category GetCategoryById(int id)
+        {
+            return this.GetAllCategories()
+                .SingleOrDefault(c=>c.Id==id);
         }
 
         public void SaveChanges()

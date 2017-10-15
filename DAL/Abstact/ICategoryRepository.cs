@@ -11,6 +11,8 @@ namespace DAL.Abstact
     {
         Category Add(Category category);
         IQueryable<Category> GetAllCategories(bool published=true);
+        void Delete(int id);
+        Category GetCategoryById(int id);
         void SaveChanges();
 
     }
