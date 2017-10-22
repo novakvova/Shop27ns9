@@ -27,6 +27,22 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>
+                            @Html.ActionLink("Привіт " + User.Identity.Name,
+                           "Manage", "Account")
+                    </li>
+                        <li>@Html.ActionLink("Вихід", "Logout", "Account")</li>
+                    }
+                    else
+                    {
+                        @*<li><a data-toggle="modal" data-target="#loginModal">Login</a></li>*@
+                        <li>@Html.ActionLink("Вхід", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Реєстрація", "Register", "Account")</li>
+                    }
+                </ul>
             </div>
         </div>
     </div>

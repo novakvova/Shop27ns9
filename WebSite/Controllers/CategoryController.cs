@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace WebSite.Controllers
 {
+    
     public class CategoryController : Controller
     {
         private readonly IProductProvider _productProvider;
@@ -52,13 +53,14 @@ namespace WebSite.Controllers
             }
             return View(editCategory);
         }
+        [Authorize]
         [HttpGet]
         public ActionResult Delete(int id)
         {
             var model = _productProvider.GetCategoryInfo(id);
             return View(model);
         }
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(CategoryItemProdViewModel categoryDel)
