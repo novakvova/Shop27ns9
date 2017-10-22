@@ -53,9 +53,15 @@
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\DBInitializer.cs" />
     <Compile Include="Entities\EFContext.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Migrations\201710080649597_Create table Categories.cs" />
     <Compile Include="Migrations\201710080649597_Create table Categories.Designer.cs">
       <DependentUpon>201710080649597_Create table Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710220624474_Add tabels Users and Roles.cs" />
+    <Compile Include="Migrations\201710220624474_Add tabels Users and Roles.Designer.cs">
+      <DependentUpon>201710220624474_Add tabels Users and Roles.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710080649597_Create table Categories.resx">
       <DependentUpon>201710080649597_Create table Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710220624474_Add tabels Users and Roles.resx">
+      <DependentUpon>201710220624474_Add tabels Users and Roles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
