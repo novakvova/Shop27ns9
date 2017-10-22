@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace WebSite.Controllers
 {
-    
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly IProductProvider _productProvider;
@@ -16,6 +16,7 @@ namespace WebSite.Controllers
         {
             _productProvider = productProvider;
         }
+        [AllowAnonymous]
         // GET: Category
         public ActionResult Index()
         {
@@ -53,14 +54,14 @@ namespace WebSite.Controllers
             }
             return View(editCategory);
         }
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public ActionResult Delete(int id)
         {
             var model = _productProvider.GetCategoryInfo(id);
             return View(model);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(CategoryItemProdViewModel categoryDel)

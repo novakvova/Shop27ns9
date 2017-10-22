@@ -12,7 +12,7 @@ namespace WebSite.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "Studentka,Admin")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
