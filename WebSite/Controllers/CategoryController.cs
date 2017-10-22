@@ -28,8 +28,44 @@ namespace WebSite.Controllers
         [HttpPost]
         public ActionResult Add(AddCategoryProdViewModel category)
         {
-            int result=_productProvider.AddCategory(category);
+            int result = _productProvider.AddCategory(category);
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var model = _productProvider.EditCategory(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditCategoryProdViewModel editCategory)
+        {
+            if (ModelState.IsValid)
+            {
+                int result = _productProvider.EditCategory(editCategory);
+                if (result == 0)
+                    ModelState.AddModelError("", "Помилка збереження даних!");
+                else if (result != 0)
+                    return RedirectToAction("Index");
+            }
+            return View(editCategory);
+        }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var model = _productProvider.GetCategoryInfo(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(CategoryItemProdViewModel categoryDel)
+        {
+            _productProvider.Delete(categoryDel.Id);
+            return RedirectToAction("Index");
+
         }
     }
 }

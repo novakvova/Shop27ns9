@@ -11,10 +11,13 @@
                 #
             </th>
             <th>
-                Name
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                Published
+                @Html.DisplayNameFor(model => model.Published)
+            </th>
+            <th>
+
             </th>
         </tr>
     </thead>
@@ -22,15 +25,19 @@
         @foreach (var item in Model)
         {
         <tr>
-            <th>
+            <td>
                 @item.Id
-            </th>
-            <th>
+            </td>
+            <td>
                 @item.Name
-            </th>
-            <th>
+            </td>
+            <td>
                 @item.Published
-            </th>
+            </td>
+            <td>
+                <a href="@Url.Action("Edit",new { id=item.Id })">Edit</a> |
+                <a href="@Url.Action("Delete",new { id=item.Id })">Delete</a>
+            </td>
         </tr>
         }
     </tbody>
