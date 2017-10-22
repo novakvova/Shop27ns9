@@ -26,6 +26,10 @@ namespace BLL.Concrete
                 .As<ICategoryRepository>().InstancePerRequest();
             builder.RegisterType<ProductProvider>()
                 .As<IProductProvider>().InstancePerRequest();
+            builder.RegisterType<UserRepository>()
+                .As<IUserRepository>().InstancePerRequest();
+            builder.RegisterType<AccountProvider>()
+                .As<IAccountProvider>().InstancePerRequest();
             base.Load(builder);
         }
     }
