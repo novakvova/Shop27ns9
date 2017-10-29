@@ -30,6 +30,9 @@ namespace BLL.Concrete
                 .As<IUserRepository>().InstancePerRequest();
             builder.RegisterType<AccountProvider>()
                 .As<IAccountProvider>().InstancePerRequest();
+
+            builder.RegisterType<UserProvider>()
+                .As<IUserProvider>().InstancePerRequest();
             base.Load(builder);
         }
     }
