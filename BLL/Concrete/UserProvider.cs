@@ -39,6 +39,20 @@ namespace BLL.Concrete
             return 0;
         }
 
+        public UserEditViewModel Edit(int id)
+        {
+            UserEditViewModel model = null;
+            var user = _userRepository.GetUserById(id);
+            if(user!=null)
+            {
+                model = new UserEditViewModel();
+                model.Id = user.Id;
+                model.Email = user.Email;
+                model.Roles = user.Roles.Select(r => r.Id).ToArray();
+            }
+            return model;
+        }
+
         public IEnumerable<UserItemViewModel> GetAllUsers()
         {
             IEnumerable<UserItemViewModel> users=
@@ -54,6 +68,13 @@ namespace BLL.Concrete
             return users;
         }
 
-       
+        public IEnumerable<ItemSelectViewModel> GetListItemRoles()
+        {
+            return _roleRepository.GetAllRoles()
+                .Select(r=>new ItemSelectViewModel {
+                    Id=r.Id,
+                    Name=r.Name
+                });
+        }
     }
 }

@@ -22,6 +22,12 @@ namespace WebSite.Controllers
             //var list = model.ToList();
             return View(model);
         }
+        public ActionResult Edit(int id)
+        {
+            var model = _userProvider.Edit(id);
+            ViewBag.ListRoles = _userProvider.GetListItemRoles();
+            return View(model);
+        }
         [HttpPost]
         public ContentResult DeleteUserRole(int userId, int roleId)
         {

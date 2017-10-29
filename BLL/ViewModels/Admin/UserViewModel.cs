@@ -12,6 +12,14 @@ namespace BLL.ViewModels.Admin
         public string  Email { get; set; }
         public IEnumerable<RoleItemViewModel> Roles { get; set; }
     }
+    public class UserEditViewModel
+    {
+        public int Id { get; set; }
+        public string Email { get; set; }
+        public int[] Roles { get; set; }
+    }
+
+
     public class RoleItemViewModel
     {
         public int Id { get; set; }

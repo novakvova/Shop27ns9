@@ -1,4 +1,5 @@
-﻿using BLL.ViewModels.Admin;
+﻿using BLL.ViewModels;
+using BLL.ViewModels.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace BLL.Abstract
     {
         IEnumerable<UserItemViewModel> GetAllUsers();
         int DeleteUserRole(int userId, int roleId);
+        IEnumerable<ItemSelectViewModel> GetListItemRoles();
+        UserEditViewModel Edit(int id);
     }
 }
