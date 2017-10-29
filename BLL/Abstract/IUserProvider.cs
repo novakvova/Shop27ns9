@@ -10,5 +10,6 @@ namespace BLL.Abstract
     public interface IUserProvider
     {
         IEnumerable<UserItemViewModel> GetAllUsers();
+        int DeleteUserRole(int userId, int roleId);
     }
 }

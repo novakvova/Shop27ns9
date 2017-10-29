@@ -1,4 +1,5 @@
 ﻿using BLL.Abstract;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,18 @@ namespace WebSite.Controllers
             var model = _userProvider.GetAllUsers();
             //var list = model.ToList();
             return View(model);
+        }
+        [HttpPost]
+        public ContentResult DeleteUserRole(int userId, int roleId)
+        {
+            string json = "";
+            int rez = _userProvider.DeleteUserRole(userId, roleId); 
+            
+            json = JsonConvert.SerializeObject(new
+            {
+                rez = rez
+            });
+            return Content(json, "application/json");
         }
     }
 }

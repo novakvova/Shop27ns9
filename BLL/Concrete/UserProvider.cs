@@ -14,11 +14,29 @@ namespace BLL.Concrete
     public class UserProvider : IUserProvider
     {
         private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
 
-
-        public UserProvider(IUserRepository userRepository)
+        public UserProvider(IUserRepository userRepository,
+            IRoleRepository roleRepository)
         {
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
+        }
+
+        public int DeleteUserRole(int userId, int roleId)
+        {
+            var role= _roleRepository.GetRoleById(roleId);
+            if(role!=null)
+            {
+                var user = _userRepository.GetUserById(userId);
+                if(user!=null)
+                {
+                    user.Roles.Remove(role);
+                    _userRepository.SaveChange();
+                    return 1;
+                }
+            }
+            return 0;
         }
 
         public IEnumerable<UserItemViewModel> GetAllUsers()

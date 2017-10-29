@@ -28,6 +28,11 @@ namespace BLL.Concrete
                 .As<IProductProvider>().InstancePerRequest();
             builder.RegisterType<UserRepository>()
                 .As<IUserRepository>().InstancePerRequest();
+
+            builder.RegisterType<RoleRepository>()
+                .As<IRoleRepository>().InstancePerRequest();
+
+
             builder.RegisterType<AccountProvider>()
                 .As<IAccountProvider>().InstancePerRequest();
 
