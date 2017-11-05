@@ -14,5 +14,6 @@ namespace BLL.Abstract
         int DeleteUserRole(int userId, int roleId);
         IEnumerable<ItemSelectViewModel> GetListItemRoles();
         UserEditViewModel Edit(int id);
+        int Edit(UserEditViewModel editUser);
     }
 }

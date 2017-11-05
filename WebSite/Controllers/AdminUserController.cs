@@ -1,4 +1,5 @@
 ﻿using BLL.Abstract;
+using BLL.ViewModels.Admin;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,22 @@ namespace WebSite.Controllers
             //var list = model.ToList();
             return View(model);
         }
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             var model = _userProvider.Edit(id);
+            ViewBag.ListRoles = _userProvider.GetListItemRoles();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Edit(UserEditViewModel model)
+        {
+            var rez = _userProvider.Edit(model);
+            if(rez!=0)
+            {
+                return RedirectToAction("Index");
+            }
+            //var model = _userProvider.Edit(id);
             ViewBag.ListRoles = _userProvider.GetListItemRoles();
             return View(model);
         }

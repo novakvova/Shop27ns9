@@ -40,6 +40,12 @@
                         <option value="@item.Id" @Html.Raw(selected)>@item.Name</option>
                     }
                 </select>
+                <div id="selectedRolesArray">
+                    @foreach (var item in Model.Roles)
+                    {
+                        <input type="hidden" name="Roles" id="Roles" value="@item" />
+                    }
+                </div>
 
             </div>
         </div>
@@ -65,5 +71,15 @@
     <script>
         $(".chosen-select").chosen();
         $(".chosen-select-deselect").chosen({ allow_single_deselect: true });
+        $("#mySelectChosen").on("change", function () {
+            var selectedArray = $(this).val();
+            var divRoles = $("#selectedRolesArray");
+            var result = "";
+            $.each(selectedArray, function (key, value) {
+                result += '<input type="hidden" name="Roles" id="Roles" value="'+value+'" />';
+            });
+            divRoles.html(result);
+            //console.log($(this).val());
+        });
     </script>
 }
